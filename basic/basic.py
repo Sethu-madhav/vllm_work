@@ -13,7 +13,7 @@ sampling_params = SamplingParams(temperature=0.8, top_p=0.95)
 
 def main():
     # Create an LLM.
-    llm = LLM(model="Qwen/Qwen3-4B-Thinking-2507-FP8")
+    llm = LLM(model="Qwen/Qwen3-1.7B")
     # Generate texts from the prompts.
     # The output is a list of RequestOutput objects
     # that contain the prompt, generated text, and other information.
