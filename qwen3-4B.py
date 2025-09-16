@@ -4,7 +4,9 @@ from vllm import LLM, SamplingParams
 llm = LLM(
           model="Qwen/Qwen3-4B-Instruct-2507", 
           tensor_parallel_size=1, 
-          max_seq_len_to_capture=32768
+          max_model_len=2048,
+          max_seq_len_to_capture=2048,
+          gpu_memory_utilization=0.9,
         )
 
 # 2. set sampling params
@@ -34,3 +36,6 @@ for i, output in enumerate(outputs):
     print(output.outputs[0].text)
     print(output.outputs[0].stop_reason)
     print("-"*40)
+
+# 5. release model weights 
+llm.llm_engine.engine_core.shutdown()
